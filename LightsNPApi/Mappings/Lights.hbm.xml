@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" assembly="LightsNPApi" namespace="LightsNPApi.Models">
+  <class name="Lights" table="lights">
+    <meta attribute="class-description">
+      Lights Class
+    </meta>
+    <id name="Id" column="uuid" type="int" >
+      <generator class="native"/>
+    </id>
+    <property name="Latitude" column="lat" type="int"/>
+    <property name="Logitude" column="longi" type="int"/>
+    <property name="LuxAttrib" column="lux" type="int"/>
+  </class>
+</hibernate-mapping>
