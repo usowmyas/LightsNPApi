@@ -31,14 +31,14 @@ namespace LightsNPApi.Controllers
             Lights light = new Lights();
             using (ISession session = NHibernateSession.OpenSession())
             {
-                light = session.Query<Lights>().Where(b => b.Id == id).FirstOrDefault();
+                light = session.Query<Lights>().FirstOrDefault(b => b.Id == id);
             }
 
             return light;
         }
 
         // POST: api/Lights
-        public void Post([FromBody]string value)
+        public void Post([FromBody] string value)
         {
         }
 
