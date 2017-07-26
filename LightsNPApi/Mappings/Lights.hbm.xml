@@ -4,7 +4,11 @@
     <meta attribute="class-description">
       Lights Class
     </meta>
-    <id name="Id" column="uuid" type="int" >
+    <set name="Oplpclight" inverse="true" cascade="save-update">
+      <key column="OplpcId"  not-null="true"/>
+      <one-to-many class="Oplpc" />
+    </set>
+   <id name="Id" column="uuid" type="int" >
       <generator class="native"/>
     </id>
     <property name="Latitude" column="lat" type="int"/>
@@ -12,3 +16,4 @@
     <property name="LuxAttrib" column="lux" type="int"/>
   </class>
 </hibernate-mapping>
+

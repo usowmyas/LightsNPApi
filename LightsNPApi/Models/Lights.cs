@@ -11,5 +11,8 @@ namespace LightsNPApi.Models
         public virtual int Latitude { get; set; }
         public virtual int Logitude { get; set; }
         public virtual int LuxAttrib { get; set; }
+        public virtual IList<Oplpc> Oplpclights { get; set; }
+        // public virtual Oplpc Oplpclights { get; set; }
+
     }
 }

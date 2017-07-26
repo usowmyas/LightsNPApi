@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Net.Http.Formatting;
 using System.Web.Http;
 using LightsNPApi.Models;
 using NHibernate;
@@ -16,30 +17,61 @@ namespace LightsNPApi.Controllers
         public IList<Lights> Get()
         {
             IList<Lights> lights;
+            //IList<Oplpc> olcs;
 
-            using (ISession session = NHibernateSession.OpenSession())  // Open a session to conect to the database
+            using (ISession session = NHibernateSession.OpenOplpcSession())  
             {
-                lights = session.Query<Lights>().ToList(); //  Querying to get all lights
+               lights = session.Query<Lights>().ToList();
+                //olcs = session.Query<Oplpc>().ToList();
             }
-
             return lights;
+            //return olcs;
         }
 
-        // GET: api/Lights/5
+        // GET: api/Lights/5 one-to-one 
+        /*
         public Lights Get(int id)
         {
+           Lights olights;
+            using (ISession session = NHibernateSession.OpenOplpcSession())
+            {
+               olights = session.Get<Lights>(id);
+                //light = session.Query<Lights>().FirstOrDefault(b => b.Id == id);
+            }
+            return olights;
+        }
+        */
+
+        // GET: api/Lights/5 one-to-one 
+        
+       public Lights Get(int id)
+        {
+           Lights olights;
+            using (ISession session = NHibernateSession.OpenOplpcSession())
+            {
+                olights = session.Get<Lights>(id);
+            }
+            return olights;
+        }
+        
+       
+        // POST: api/Lights
+        public void Post(FormDataCollection collection)
+        {
             Lights light = new Lights();
+            light.Id = int.Parse(collection["Id"]);
+            light.Latitude = int.Parse(collection["Latitude"]);
+            light.Logitude = int.Parse(collection["Longitude"]);
+            light.LuxAttrib = int.Parse(collection["LuxAttrib"]);
+
             using (ISession session = NHibernateSession.OpenSession())
             {
-                light = session.Query<Lights>().FirstOrDefault(b => b.Id == id);
+                using (ITransaction transaction = session.BeginTransaction())
+                {
+                    session.Save(light);
+                    transaction.Commit();
+                }
             }
-
-            return light;
-        }
-
-        // POST: api/Lights
-        public void Post([FromBody] string value)
-        {
         }
 
         // PUT: api/Lights/5

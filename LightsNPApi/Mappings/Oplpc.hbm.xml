@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" assembly="LightsNPApi" namespace="LightsNPApi.Models">
+  <class name="Lights" table="lights">
+    <meta attribute="class-description">
+      Lights Class
+    </meta>
+    <id name="Id" column="uuid" type="int" >
+      <generator class="native"/>
+    </id>
+    <property name="Latitude" column="lat" type="int"/>
+    <property name="Logitude" column="longi" type="int"/>
+    <property name="LuxAttrib" column="lux" type="int"/>
+   <bag name="Oplpclights" lazy="false" cascade="all">
+      <key column="oplpcid"/>
+      <one-to-many class="Oplpc"/>
+    </bag>
+  </class>
+  <class name="Oplpc" table="olc">
+    <meta attribute="class-description">
+      Oplpc Class
+    </meta>
+  <id name="OplpcId" column="oplpcid" type="int" >
+      <generator class="native"/>
+  </id>
+  <property name="LuxAttribA" column="luxa" type="int"/>
+  <property name="LuxAttribB" column="luxb" type="float"/>
+  <property name="DateAtribD" column="luxd" type="DateTime"/>
+  <property name="LuxAttribC" column="luxc" type="string" />
+</class>
+</hibernate-mapping>

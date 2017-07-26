@@ -19,5 +19,16 @@ namespace LightsNPApi
             ISessionFactory sessionFactory = configuration.BuildSessionFactory();
             return sessionFactory.OpenSession();
         }
+
+        public static ISession OpenOplpcSession()
+        {
+            var configuration = new Configuration();
+            var configurationPath = HttpContext.Current.Server.MapPath(@"~\Models\hibernate.cfg.xml");
+            configuration.Configure(configurationPath);
+            var lightsConfigurationFile = HttpContext.Current.Server.MapPath(@"~\Mappings\Oplpc.hbm.xml");
+            configuration.AddFile(lightsConfigurationFile);
+            ISessionFactory sessionFactory = configuration.BuildSessionFactory();
+            return sessionFactory.OpenSession();
+        }
     }
 }

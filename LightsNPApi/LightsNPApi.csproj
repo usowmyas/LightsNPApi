@@ -127,6 +127,7 @@
   <ItemGroup>
     <Content Include="Global.asax" />
     <Content Include="Mappings\Lights.hbm.xml" />
+    <Content Include="Mappings\Oplpc.hbm.xml" />
     <Content Include="Models\hibernate.cfg.xml" />
     <Content Include="scripts\ai.0.15.0-build58334.js" />
     <Content Include="scripts\ai.0.15.0-build58334.min.js" />
@@ -139,6 +140,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Lights.cs" />
+    <Compile Include="Models\Oplpc.cs" />
     <Compile Include="NHibernateSession.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
