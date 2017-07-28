@@ -19,9 +19,9 @@ namespace LightsNPApi.Controllers
             IList<Lights> lights;
             //IList<Oplpc> olcs;
 
-            using (ISession session = NHibernateSession.OpenOplpcSession())  
+            using (ISession session = NHibernateSession.OpenOplpcSession())
             {
-               lights = session.Query<Lights>().ToList();
+                lights = session.Query<Lights>().ToList();
                 //olcs = session.Query<Oplpc>().ToList();
             }
             return lights;
@@ -43,18 +43,18 @@ namespace LightsNPApi.Controllers
         */
 
         // GET: api/Lights/5 one-to-one 
-        
-       public Lights Get(int id)
+
+        public Lights Get(int id)
         {
-           Lights olights;
+            Lights olights;
             using (ISession session = NHibernateSession.OpenOplpcSession())
             {
                 olights = session.Get<Lights>(id);
             }
             return olights;
         }
-        
-       
+
+
         // POST: api/Lights
         public void Post(FormDataCollection collection)
         {

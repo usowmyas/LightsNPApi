@@ -10,7 +10,7 @@
     <property name="Latitude" column="lat" type="int"/>
     <property name="Logitude" column="longi" type="int"/>
     <property name="LuxAttrib" column="lux" type="int"/>
-   <bag name="Oplpclights" lazy="false" cascade="all">
+    <bag name="Oplpclights" lazy="false" cascade="all">
       <key column="oplpcid"/>
       <one-to-many class="Oplpc"/>
     </bag>
@@ -19,12 +19,12 @@
     <meta attribute="class-description">
       Oplpc Class
     </meta>
-  <id name="OplpcId" column="oplpcid" type="int" >
+    <id name="OplpcId" column="oplpcid" type="int" >
       <generator class="native"/>
-  </id>
-  <property name="LuxAttribA" column="luxa" type="int"/>
-  <property name="LuxAttribB" column="luxb" type="float"/>
-  <property name="DateAtribD" column="luxd" type="DateTime"/>
-  <property name="LuxAttribC" column="luxc" type="string" />
-</class>
+    </id>
+    <property name="LuxAttribA" column="luxa" type="int"/>
+    <property name="LuxAttribB" column="luxb" type="float"/>
+    <property name="DateAtribD" column="luxd" type="DateTime"/>
+    <property name="LuxAttribC" column="luxc" type="string" />
+  </class>
 </hibernate-mapping>

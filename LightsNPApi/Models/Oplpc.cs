@@ -13,7 +13,7 @@ namespace LightsNPApi.Models
         public virtual float LuxAttribB { get; set; }
         public virtual DateTime DateAtribD { get; set; }
         public virtual string LuxAttribC { get; set; }
-        
-        
+
+
     }
 }
